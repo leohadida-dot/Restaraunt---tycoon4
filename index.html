@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo's Restaurant Tycoon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>🍔 Leo's Restaurant Tycoon</h1>
+        <p>Build your restaurant empire.</p>
+    </div>
+
+```
+<div class="money">
+    💰 <span id="money">$10,000</span>
+</div>
+```
+
+</header>
+
+<nav>
+    <button onclick="showPage('home')">🏠 Home</button>
+    <button onclick="showPage('restaurant')">🍽️ Restaurant</button>
+    <button onclick="showPage('staff')">👨‍🍳 Staff</button>
+    <button onclick="showPage('upgrades')">⬆️ Upgrades</button>
+    <button onclick="showPage('locations')">🌎 Locations</button>
+</nav>
+
+<main>
+
+```
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+        <div>
+            <span>RESTAURANT EMPIRE</span>
+            <h2>Start small. Become massive. 🚀</h2>
+            <p>
+                Open your restaurant, serve customers,
+                make money and expand around the world.
+            </p>
+        </div>
+
+        <button class="big-button" onclick="showPage('restaurant')">
+            🍔 Go To Restaurant
+        </button>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <span>💰 Cash</span>
+            <strong id="homeMoney">$10,000</strong>
+        </div>
+
+        <div class="stat">
+            <span>👥 Customers</span>
+            <strong id="customers">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>⭐ Rating</span>
+            <strong id="rating">4.0</strong>
+        </div>
+
+        <div class="stat">
+            <span>🏆 Level</span>
+            <strong id="level">1</strong>
+        </div>
+
+    </div>
+
+    <div class="panel">
+        <h2>📊 Empire Progress</h2>
+
+        <p>
+            XP:
+            <b id="xp">0</b> /
+            <b id="xpMax">100</b>
+        </p>
+
+        <div class="bar">
+            <div id="xpBar"></div>
+        </div>
+
+        <div class="three-stats">
+
+            <div>
+                <small>Today's Customers</small>
+                <b id="todayCustomers">0</b>
+            </div>
+
+            <div>
+                <small>Today's Revenue</small>
+                <b id="todayRevenue">$0</b>
+            </div>
+
+            <div>
+                <small>Day</small>
+                <b id="day">1</b>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>📰 Empire News</h2>
+        <div id="news">
+            <p>🎉 Welcome to Leo's Restaurant Tycoon!</p>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- RESTAURANT -->
+
+<section id="restaurant" class="page">
+
+    <div class="page-header">
+
+        <div>
+            <span>LIVE RESTAURANT</span>
+            <h2>🍽️ Leo's Burger House</h2>
+        </div>
+
+        <button
+            id="openButton"
+            class="big-button"
+            onclick="toggleRestaurant()">
+            🟢 OPEN RESTAURANT
+        </button>
+
+    </div>
+
+    <div class="restaurant-layout">
+
+        <div class="restaurant-box">
+
+            <div class="restaurant-top">
+                <span id="status">🔴 CLOSED</span>
+                <span>Day <b id="restaurantDay">1</b></span>
+                <span>⏱️ <b id="timer">60</b>s</span>
+            </div>
+
+            <div class="floor">
+
+                <div class="kitchen">
+                    👨‍🍳
+                    <strong>KITCHEN</strong>
+                    <small id="chefDisplay">1 Chef</small>
+                </div>
+
+                <div id="tables"></div>
+
+                <div id="people"></div>
+
+                <div class="counter">
+                    🍔 ORDER COUNTER
+                </div>
+
+            </div>
+
+            <div class="restaurant-bottom">
+
+                <span>
+                    👥
+                    <b id="served">0</b>
+                    Served
+                </span>
+
+                <span>
+                    🪑
+                    <b id="tableNumber">3</b>
+                    Tables
+                </span>
+
+                <span>
+                    👨‍🍳
+                    <b id="chefNumber">1</b>
+                    Chefs
+                </span>
+
+                <span>
+                    🧑‍💼
+                    <b id="waiterNumber">1</b>
+                    Waiters
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel finances">
+
+            <h2>💰 Finances</h2>
+
+            <div class="finance-row">
+                <span>Revenue</span>
+                <b id="revenue">$0</b>
+            </div>
+
+            <div class="finance-row">
+                <span>Food Costs</span>
+                <b id="foodCosts">$0</b>
+            </div>
+
+            <div class="finance-row">
+                <span>Staff Costs</span>
+                <b id="staffCosts">$0</b>
+            </div>
+
+            <hr>
+
+            <div class="finance-row profit">
+                <span>Profit</span>
+                <b id="profit">$0</b>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>🍔 Menu</h2>
+
+        <div id="menu" class="menu"></div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>⭐ Customer Reviews</h2>
+
+        <div id="reviews">
+            <p>Open your restaurant to receive reviews!</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STAFF -->
+
+<section id="staff" class="page">
+
+    <div class="page-header">
+        <div>
+            <span>YOUR TEAM</span>
+            <h2>👨‍🍳 Staff</h2>
+        </div>
+    </div>
+
+    <div id="staffGrid" class="cards"></div>
+
+</section>
+
+
+<!-- UPGRADES -->
+
+<section id="upgrades" class="page">
+
+    <div class="page-header">
+        <div>
+            <span>MAKE YOUR RESTAURANT BETTER</span>
+            <h2>⬆️ Upgrades</h2>
+        </div>
+    </div>
+
+    <div id="upgradeGrid" class="cards"></div>
+
+</section>
+
+
+<!-- LOCATIONS -->
+
+<section id="locations" class="page">
+
+    <div class="page-header">
+        <div>
+            <span>GLOBAL EXPANSION</span>
+            <h2>🌎 Locations</h2>
+        </div>
+    </div>
+
+    <div id="locationGrid" class="cards"></div>
+
+</section>
+```
+
+</main>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
